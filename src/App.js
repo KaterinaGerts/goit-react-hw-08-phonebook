@@ -2,9 +2,9 @@ import Container from 'components/Container';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
-import * as contactsApi from 'services/contacts-api';
+// import * as contactsApi from 'services/contacts-api';
 
-contactsApi.getAllContacts();
+// contactsApi.getAllContacts();
 
 function App() {
   return (
