@@ -2,6 +2,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import s from './RegisterView.module.css';
 import AuthButton from 'components/AuthButton';
+import { useDispatch } from 'react-redux';
+import {regicterUser} from 'redux/auth/auth-operations';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -17,6 +19,8 @@ const validationSchema = Yup.object({
 });
 
 export const RegisterView = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{ name: '', email: '', password: '' }}
@@ -24,14 +28,7 @@ export const RegisterView = () => {
       onSubmit={(values, { resetForm }) => {
         resetForm();
         const { name, email, password } = values;
-        // const checkedName = contacts.find(
-        //   contact => contact.name.toLowerCase() === name.toLowerCase(),
-        // );
-        // if (checkedName) {
-        //   alert(`${name} is already in contacts!`);
-        //   return contacts;
-        // } dispatch(addContact({ name, number }));
-        console.log(name, email, password);
+        dispatch(regicterUser({name, email, password}));
       }}
     >
       <Form className={s.form}>
