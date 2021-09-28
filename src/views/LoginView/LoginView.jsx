@@ -18,14 +18,7 @@ const LoginView = () => {
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
         resetForm();
-        const { email, password } = values;
-        // const checkedName = contacts.find(
-        //   contact => contact.name.toLowerCase() === name.toLowerCase(),
-        // );
-        // if (checkedName) {
-        //   alert(`${name} is already in contacts!`);
-        //   return contacts;
-        // } dispatch(addContact({ name, number }));
+        const { email, password } = values;       
         console.log(email, password);
       }}
     >
