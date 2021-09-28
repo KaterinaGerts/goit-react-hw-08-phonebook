@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import s from './RegisterView.module.css';
+import AuthButton from 'components/AuthButton';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -58,10 +59,12 @@ export const RegisterView = () => {
           name="password"
           placeholder="Password"
         />
-        <ErrorMessage name="password" />
-        <button type="submit">Register</button>
-        {/* <Button /> */}
+        <ErrorMessage name="password" />     
+         <AuthButton /> 
       </Form>
     </Formik>
   )
 }
+
+
+export default RegisterView;

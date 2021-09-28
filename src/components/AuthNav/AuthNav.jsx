@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import s from './AuthNav.module.css';
 
 
-export const AuthNav = () => {
+ const AuthNav = () => {
   return (
     <div>
       <NavLink
@@ -12,16 +12,18 @@ export const AuthNav = () => {
         style={s.link}
         activeStyle={s.activeLink}
       >
-        Регистрация
+        Sign up
       </NavLink>
       <NavLink
         to="/users/login"
-        exact
+         exact
         style={s.link}
         activeStyle={s.activeLink}
       >
-        Логин
+        Log in
       </NavLink>
     </div>
   );
 }
+
+export default AuthNav;

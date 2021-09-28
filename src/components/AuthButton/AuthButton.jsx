@@ -1,8 +1,10 @@
 import s from './AuthButton.module.css';
 
 
-export const AuthButton = () => (
+ const AuthButton = () => (
   <button type="submit" className={s.button}>
-    Log in
+    Register
   </button>
 );
+
+export default AuthButton;

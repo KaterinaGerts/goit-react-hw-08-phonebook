@@ -11,7 +11,7 @@ const validationSchema = Yup.object({
     .required('Password is required'),
 });
 
-export const LoginView = () => {
+const LoginView = () => {
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
@@ -30,7 +30,7 @@ export const LoginView = () => {
       }}
     >
       <Form className={s.form}>
-        <label htmlFor="email" className={s.label}>
+        <label htmlFor="name" className={s.label}>
           Email
         </label>
         <Field
@@ -40,7 +40,7 @@ export const LoginView = () => {
           placeholder="Email"
         />
         <ErrorMessage name="email" />
-        <label htmlFor="password" className={s.label}>
+        <label htmlFor="name" className={s.label}>
           Password
         </label>
         <Field
@@ -56,3 +56,5 @@ export const LoginView = () => {
     </Formik>
   );
 };
+
+export default LoginView;
