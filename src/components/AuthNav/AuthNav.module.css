@@ -1,0 +1,14 @@
+.link {
+  margin-right: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  color: #2f4f4f; 
+  font-style: oblique; 
+  text-shadow: -1px -1px #000;
+}
+
+.activeLink {
+  text-decoration: underline;
+  color: #ff0000;
+}
