@@ -1,14 +1,15 @@
 import s from './AppBar.module.css';
 import Navigation from 'components/Navigation';
 import AuthNav from 'components/AuthNav';
+import UserMenu from 'components/UserMenu';
 
 
 const AppBar = () => {
   return (
-    <header style={s.header}>
-      <Navigation />      
-      <AuthNav />
-      {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
+    <header className={s.header}>
+      <Navigation /> 
+      <AuthNav />      
+      <UserMenu/>    
     </header>
   );
 }

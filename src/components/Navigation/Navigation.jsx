@@ -8,7 +8,7 @@ const Navigation = () => {
         Home
       </NavLink>
 
-      <NavLink to="/contacts" exact style={s.link} activeStyle={s.activeLink}>
+      <NavLink to="/contacts" style={s.link} activeStyle={s.activeLink}>
         Contacts
       </NavLink>
     </nav>
