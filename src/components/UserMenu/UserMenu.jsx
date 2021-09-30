@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsername } from 'redux/auth/auth-selectors';
+import authSelectors from 'redux/auth/auth-selectors';
 import {logOutUser} from 'redux/auth/auth-operations';
 import defaultImg from 'helpers/default-img.png';
 import s from './UserMenu.module.css';
 
 function UserMenu() {
   const dispatch = useDispatch();
-  const userName = useSelector(getUsername);
+  const userName = useSelector(authSelectors.getUsername);
 
 
   return (

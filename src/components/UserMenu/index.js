@@ -1,1 +1,1 @@
-export {default} from 'components/UserMenu';
+export {default} from './UserMenu';
