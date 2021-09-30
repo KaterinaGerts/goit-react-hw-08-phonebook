@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { regicterUser, logInUser } from './auth-operations';
+import { regicterUser, logInUser, logOutUser, checkCurrentUser } from './auth-operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -19,6 +19,15 @@ const AuthSlice = createSlice({
     [logInUser.fulfilled](state, { payload }) {
       state.user = payload.user;
       state.token = payload.token;
+      state.isLoggedIn = true;
+    },
+    [logOutUser.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    [checkCurrentUser.fulfilled](state, { payload }) {
+      state.user = payload;     
       state.isLoggedIn = true;
     },
   },
