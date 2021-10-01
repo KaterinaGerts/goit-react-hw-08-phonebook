@@ -30,6 +30,6 @@ export const logOut = async () => {
  
  export const currentUser = async currentToken => {
    token.set(currentToken);
-   const {data} = await axios.get('​/users​/current');
+   const {data} = await axios.get('/users/current');
    return data;  
  }

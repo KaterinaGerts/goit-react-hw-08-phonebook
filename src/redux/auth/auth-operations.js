@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as authApi from 'services/auth-api';
-// import axios from 'axios';
+
 
 export const regicterUser = createAsyncThunk(
   'auth/regicterUser',
@@ -41,10 +41,10 @@ export const saveCurrentUser = createAsyncThunk(
   'auth/saveCurrentUser',
   async (_, thunkAPI) => {   
     const state = thunkAPI.getState();   
-    const currentToken = state.authorization.token;
+    const currentToken = state.auth.token;
     if (!currentToken) {
       return thunkAPI.rejectWithValue();
-    }
+    }   
     try {
       const data = await authApi.currentUser(currentToken);
       return data;
@@ -54,33 +54,5 @@ export const saveCurrentUser = createAsyncThunk(
   },
 );
 
-// axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
 
-// export const saveCurrentUser = createAsyncThunk(
-//   'auth/refresh',
-//   async (_, thunkAPI) => {
-//     const state = thunkAPI.getState();
-//     const persistedToken = state.auth.token;
-
-//     if (persistedToken === null) {//
-//       return thunkAPI.rejectWithValue();
-//     }
-
-//     token.set(persistedToken);
-//     try {
-//       const { data } = await axios.get('/users/current');
-//       return data;
-//     } catch (error) {
-//       // TODO: Добавить обработку ошибки error.message
-//     }
-//   },
-// );
