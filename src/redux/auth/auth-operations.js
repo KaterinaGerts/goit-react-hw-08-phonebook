@@ -39,11 +39,10 @@ export const logOutUser = createAsyncThunk(
 
 export const saveCurrentUser = createAsyncThunk(
   'auth/saveCurrentUser',
-  async (_, thunkAPI) => {
-    console.log(thunkAPI);
+  async (_, thunkAPI) => {   
     const state = thunkAPI.getState();   
     const currentToken = state.authorization.token;
-    if (currentToken === null) {
+    if (!currentToken) {
       return thunkAPI.rejectWithValue();
     }
     try {
