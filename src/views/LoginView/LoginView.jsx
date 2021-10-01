@@ -47,8 +47,7 @@ const LoginView = () => {
           placeholder="Password"
         />
         <ErrorMessage name="password" />
-        <button type="submit">Log in</button>
-        {/* <Button /> */}
+        <button type="submit" className={s.button}>Log in</button>       
       </Form>
     </Formik>
   );

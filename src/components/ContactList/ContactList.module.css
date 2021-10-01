@@ -8,6 +8,7 @@
   text-align: left;
   width: 500px;
   padding: 0;
+ 
 }
 
 @media screen and (max-width: 768px) {
@@ -23,6 +24,7 @@
   font-weight: bold;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-style: oblique;
+  color: #fff;
   text-shadow: -1px -1px #000;
 }
 

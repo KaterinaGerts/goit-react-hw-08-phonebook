@@ -11,9 +11,9 @@ function UserMenu() {
 
   return (
     <div className={s.container}>
-      <img src={defaultImg} alt="" width="32" className={s.avatar} />
+      <img src={defaultImg} alt="" width="60" className={s.avatar} />
       <span className={s.name}>Welcome, {userName}</span>
-      <button type="button" onClick={() => dispatch(logOutUser())}>
+      <button type="button" className={s.button} onClick={() => dispatch(logOutUser())}>
         Log out
       </button>
     </div>

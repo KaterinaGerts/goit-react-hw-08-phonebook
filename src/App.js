@@ -1,33 +1,66 @@
-import { useEffect} from 'react';
-import { useDispatch} from 'react-redux';
+import { useEffect, Suspense, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Container from 'components/Container';
-import { Switch, Route } from 'react-router-dom';
-import AppBar  from 'components/AppBar';
-import  HomeView  from 'views/HomeView';
-import  RegisterView  from 'views/RegisterView';
-import  LoginView  from 'views/LoginView';
-import  ContactsView  from 'views/ContactsView';
-import {checkCurrentUser} from 'redux/auth/auth-operations';
+import { Switch, Redirect } from 'react-router-dom';
+import AppBar from 'components/AppBar';
+import { saveCurrentUser } from 'redux/auth/auth-operations';
+import PrivateRoute from 'components/Routes/PrivateRoute';
+import PublicRoute from 'components/Routes/PublicRoute';
+import authSelectors from 'redux/auth/auth-selectors';
+import Spinner from 'components/Loader';
 
+const HomeView = lazy(() => import('views/HomeView'));
+const RegisterView = lazy(() => import('views/RegisterView'));
+const LoginView = lazy(() => import('views/LoginView'));
+const ContactsView = lazy(() => import('views/ContactsView'));
 
 function App() {
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
-useEffect(() => {
-  dispatch(checkCurrentUser());
-}, [dispatch]);
+  useEffect(() => {
+    dispatch(saveCurrentUser());
+  }, [dispatch]);
 
   return (
-    <Container>
-      <AppBar />
+    !isFetchingCurrentUser && (
+      <>
+        <AppBar />
 
-      <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route path="/users/signup" component={RegisterView} />
-        <Route path="/users/login" component={LoginView} />      
-        <Route path="/contacts" component={ContactsView} />
-      </Switch>
-    </Container>
+        <Container>
+          <Switch>
+            <Suspense fallback={<Spinner/>}>
+              <PublicRoute exact path="/">
+                <HomeView />
+              </PublicRoute>
+
+              <PublicRoute
+                exact
+                path="/users/signup"
+                restricted
+                redirectTo="/contacts"
+              >
+                <RegisterView />
+              </PublicRoute>
+
+              <PublicRoute
+                exact
+                path="/users/login"
+                restricted
+                redirectTo="/contacts"
+              >
+                <LoginView />
+              </PublicRoute>
+
+              <PrivateRoute path="/contacts" redirectTo="/users/login">
+                <ContactsView />
+              </PrivateRoute>
+            </Suspense>
+            <Redirect to="/" />
+          </Switch>
+        </Container>
+      </>
+    )
   );
 }
 

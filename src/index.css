@@ -5,12 +5,22 @@
 }
 
 body {
-  margin: 0;
-  background-color: #c0c0c0;
-  color: #ff0000;
+  margin: 0;  
   font-weight: normal;
-  color: darkslategrey;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-style: oblique;
+ 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
   text-shadow: -1px -1px #000;
+
+  background: url(/src/helpers/phone-bg.jpg) no-repeat center top fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;    
+  }
 }
