@@ -2,9 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './AuthNav.module.css';
 
-
- const AuthNav = () => {
-  return (  
+const AuthNav = () => {
+  return (
     <div>
       <NavLink
         to="/users/signup"
@@ -13,17 +12,17 @@ import s from './AuthNav.module.css';
         activeClassName={s.activeLink}
       >
         Sign up
-      </NavLink>      
+      </NavLink>
       <NavLink
         to="/users/login"
-         exact
-         className={s.link}
-         activeClassName={s.activeLink}
+        exact
+        className={s.link}
+        activeClassName={s.activeLink}
       >
         Log in
       </NavLink>
-      </div>   
+    </div>
   );
-}
+};
 
 export default AuthNav;

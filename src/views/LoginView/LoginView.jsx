@@ -1,8 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import s from './LoginView.module.css';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import {logInUser} from 'redux/auth/auth-operations';
+import { logInUser } from 'redux/auth/auth-operations';
 
 const validationSchema = Yup.object({
   email: Yup.string('Enter your email')
@@ -22,8 +23,8 @@ const LoginView = () => {
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
         resetForm();
-        const { email, password } = values;       
-        dispatch(logInUser({ email, password}));
+        const { email, password } = values;
+        dispatch(logInUser({ email, password }));
       }}
     >
       <Form className={s.form}>
@@ -47,10 +48,17 @@ const LoginView = () => {
           placeholder="Password"
         />
         <ErrorMessage name="password" />
-        <button type="submit" className={s.button}>Log in</button>       
+        <button type="submit" className={s.button}>
+          Log in
+        </button>
       </Form>
     </Formik>
   );
+};
+
+LoginView.propTypes = {
+  email: PropTypes.string,
+  password: PropTypes.string,
 };
 
 export default LoginView;

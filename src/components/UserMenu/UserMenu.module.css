@@ -2,10 +2,11 @@
   position: relative;
 }
 
-.avatar { 
+.avatar {
   border-radius: 20%;
   margin-right: 10px;
 }
+
 @media screen and (max-width: 768px) {
   .avatar {
     width: 35px;

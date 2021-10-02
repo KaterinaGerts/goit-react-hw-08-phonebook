@@ -1,15 +1,16 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import s from './RegisterView.module.css';
+import PropTypes from 'prop-types';
 import AuthButton from 'components/AuthButton';
 import { useDispatch } from 'react-redux';
-import {regicterUser} from 'redux/auth/auth-operations';
+import { regicterUser } from 'redux/auth/auth-operations';
 
 const validationSchema = Yup.object({
   name: Yup.string()
-  .min(2, 'Too short name!')
-  .max(50, 'Too long name!')
-  .required('required field'),
+    .min(2, 'Too short name!')
+    .max(50, 'Too long name!')
+    .required('required field'),
   email: Yup.string('Enter your email')
     .email('Enter a valid email')
     .required('Email is required'),
@@ -28,11 +29,11 @@ export const RegisterView = () => {
       onSubmit={(values, { resetForm }) => {
         resetForm();
         const { name, email, password } = values;
-        dispatch(regicterUser({name, email, password}));
+        dispatch(regicterUser({ name, email, password }));
       }}
     >
       <Form className={s.form}>
-      <label htmlFor="name" className={s.label}>
+        <label htmlFor="name" className={s.label}>
           Name{' '}
         </label>
         <Field className={s.input} type="text" name="name" placeholder="Name" />
@@ -56,12 +57,15 @@ export const RegisterView = () => {
           name="password"
           placeholder="Password"
         />
-        <ErrorMessage name="password" />     
-         <AuthButton /> 
+        <ErrorMessage name="password" />
+        <AuthButton />
       </Form>
     </Formik>
-  )
-}
+  );
+};
 
+RegisterView.propTypes = {
+  name: PropTypes.string,
+};
 
 export default RegisterView;

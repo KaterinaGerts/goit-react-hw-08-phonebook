@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as authApi from 'services/auth-api';
 
-
 export const regicterUser = createAsyncThunk(
   'auth/regicterUser',
   async (credentials, { rejectWithValue }) => {
@@ -39,12 +38,12 @@ export const logOutUser = createAsyncThunk(
 
 export const saveCurrentUser = createAsyncThunk(
   'auth/saveCurrentUser',
-  async (_, thunkAPI) => {   
-    const state = thunkAPI.getState();   
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
     const currentToken = state.auth.token;
     if (!currentToken) {
       return thunkAPI.rejectWithValue();
-    }   
+    }
     try {
       const data = await authApi.currentUser(currentToken);
       return data;
@@ -53,6 +52,3 @@ export const saveCurrentUser = createAsyncThunk(
     }
   },
 );
-
-
-

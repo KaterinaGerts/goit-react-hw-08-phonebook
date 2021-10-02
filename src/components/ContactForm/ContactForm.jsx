@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operations';
 import Button from 'components/Button';
-import {getContacts} from 'redux/contacts/contacts-selectors';
+import { getContacts } from 'redux/contacts/contacts-selectors';
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -26,18 +26,17 @@ const ContactForm = () => {
     <Formik
       initialValues={{ name: '', number: '' }}
       validationSchema={validationSchema}
-
-
       onSubmit={(values, { resetForm }) => {
         resetForm();
-        const { name, number } = values;          
-          const checkedName = contacts.find(
-            contact => contact.name.toLowerCase() === name.toLowerCase(),
-          );        
-          if (checkedName) {
-            alert(`${name} is already in contacts!`);           
-            return contacts;
-          } dispatch(addContact({ name, number }));      
+        const { name, number } = values;
+        const checkedName = contacts.find(
+          contact => contact.name.toLowerCase() === name.toLowerCase(),
+        );
+        if (checkedName) {
+          alert(`${name} is already in contacts!`);
+          return contacts;
+        }
+        dispatch(addContact({ name, number }));
       }}
     >
       <Form className={s.form}>

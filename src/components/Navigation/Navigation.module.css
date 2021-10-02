@@ -8,7 +8,7 @@
 
 .activeLink {
   text-decoration: underline;
-  color:#8fbc8f;
+  color: #8fbc8f;
 }
 
 @media screen and (max-width: 768px) {

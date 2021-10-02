@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getVisibleContacts } from 'redux/contacts/contacts-selectors';
 import {
   fetchAllContacts,
-  deleteContact,
+  deleteContact,  
 } from 'redux/contacts/contacts-operations';
 
 function ContactList() {
@@ -17,6 +17,7 @@ function ContactList() {
   }, [dispatch]);
 
   const onDeleteContact = id => dispatch(deleteContact(id));
+  
   return (
     <ol className={s.contactList}>
       {contacts?.map(({ name, number, id }) => (
@@ -28,7 +29,7 @@ function ContactList() {
             onClick={() => onDeleteContact(id)}
           >
             Delete
-          </button>
+          </button>          
         </li>
       ))}
     </ol>

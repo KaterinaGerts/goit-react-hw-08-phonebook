@@ -1,7 +1,6 @@
 import s from './AuthButton.module.css';
 
-
- const AuthButton = () => (
+const AuthButton = () => (
   <button type="submit" className={s.button}>
     Register
   </button>

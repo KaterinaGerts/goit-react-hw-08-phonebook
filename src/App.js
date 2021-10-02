@@ -29,7 +29,7 @@ function App() {
 
         <Container>
           <Switch>
-            <Suspense fallback={<Spinner/>}>
+            <Suspense fallback={<Spinner />}>
               <PublicRoute exact path="/">
                 <HomeView />
               </PublicRoute>
